@@ -1,38 +1,40 @@
 <template>
-  <div>
-    <Nav />
+<div>
+  <Nav />
 
-    <v-card>
-      <v-card-text>
-        <p>Based on the Source SDK 2013 with the aim of creating a series of experimental games centered around fort building.</p>
-        <p>This application contains the tools used to launch, update and develop LuminousForts.</p>
-      </v-card-text>
-    </v-card>
+  <iframe src="/#/console"></iframe>
 
-    <v-tabs vertical>
-      <v-tab>Launch</v-tab>
-      <v-tab>Config</v-tab>
-      <v-tab>Hammer</v-tab>
-      <v-tab>VPK</v-tab>
-      <v-tab>Vtf</v-tab>
+  <v-card>
+    <v-card-text>
+      <p>Based on the Source SDK 2013 with the aim of creating a series of experimental games centered around fort building.</p>
+      <p>This application contains the tools used to launch, update and develop LuminousForts.</p>
+    </v-card-text>
+  </v-card>
 
-      <v-tab-item>
-        <Launch />
-      </v-tab-item>
-      <v-tab-item>
-        <Config />
-      </v-tab-item>
-      <v-tab-item>
-        <Hammer />
-      </v-tab-item>
-      <v-tab-item>
-        <Vpk />
-      </v-tab-item>
-      <v-tab-item>
-        <Vtf />
-      </v-tab-item>
-    </v-tabs>
-  </div>
+  <v-tabs vertical>
+    <v-tab>Launch</v-tab>
+    <v-tab>Config</v-tab>
+    <v-tab>Hammer</v-tab>
+    <v-tab>VPK</v-tab>
+    <v-tab>Vtf</v-tab>
+
+    <v-tab-item>
+      <Launch />
+    </v-tab-item>
+    <v-tab-item>
+      <Config />
+    </v-tab-item>
+    <v-tab-item>
+      <Hammer />
+    </v-tab-item>
+    <v-tab-item>
+      <Vpk />
+    </v-tab-item>
+    <v-tab-item>
+      <Vtf />
+    </v-tab-item>
+  </v-tabs>
+</div>
 </template>
 
 <script>

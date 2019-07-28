@@ -65,9 +65,8 @@ export default {
   methods: {
     listVpk ({ selectedFile }) {
       this.selectedFile = selectedFile
-      this.$electron.remote.app.sdk.wine({
-        cwd: '~/.steam/steam/steamapps/common/Source SDK Base 2013 Singleplayer/bin/',
-        cmd: `vpk.exe l "${selectedFile}"`
+      this.$electron.remote.app.sdk.localShell({
+        cmd: `./vpk_linux32 l "${selectedFile}"`
       }).then(({ stdout }) => {
         this.items = stdout.split('\n').map((s) => ({
           path: s
@@ -76,9 +75,8 @@ export default {
     },
     extract ({ path }) {
       const selectedFile = this.selectedFile
-      this.$electron.remote.app.sdk.wine({
-        cwd: '~/.steam/steam/steamapps/common/Source SDK Base 2013 Singleplayer/bin/',
-        cmd: `vpk.exe x "${selectedFile}" "${path}"`
+      this.$electron.remote.app.sdk.localShell({
+        cmd: `./vpk_linux32 x "${selectedFile}" "${path}"`
       }).then(({ stdout, stderr }) => {
         debugger
       })

@@ -37,17 +37,17 @@ const tools = [{
 }, {
   id: 'hammer',
   cmd: 'hammer.exe',
-  cwd: folder.bin,
+  cwd: folder.wineBin,
   launcher: 'wine'
 }, {
   id: 'hlmv',
   cmd: 'hlmv.exe',
-  cwd: folder.bin,
+  cwd: folder.wineBin,
   launcher: 'wine'
 }, {
   id: 'qc_eyes',
   cmd: 'qc_eyes.exe',
-  cwd: folder.bin,
+  cwd: folder.wineBin,
   launcher: 'wine'
 }, {
   id: 'edit_gameconfig',
@@ -135,9 +135,16 @@ export default class LuminousFortsLinux {
     })
   }
 
+  localShell ({ cwd, cmd }) {
+    return this.cmd({
+      cwd: cwd || folder.bin,
+      cmd
+    })
+  }
+
   shell ({ cwd, cmd }) {
     return this.cmd({
-      cwd,
+      cwd: cwd || folder.bin,
       cmd: '/bin/bash -C ' + cmd
     })
   }
@@ -151,7 +158,7 @@ export default class LuminousFortsLinux {
 
   wine ({ cwd, cmd }) {
     return this.cmd({
-      cwd,
+      cwd: cwd || folder.wineBin,
       cmd: 'wine ' + cmd
     })
   }
