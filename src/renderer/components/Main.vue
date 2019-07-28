@@ -1,40 +1,6 @@
 <template>
   <div>
-    <v-app-bar
-      dense
-    >
-      <Logo />
-      <v-toolbar-title>&nbsp;&nbsp;LuminousForts SDK</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon @click="openToolByName('Start Game')" v-on="on">
-            <v-icon>mdi-play</v-icon>
-          </v-btn>
-        </template>
-        <span>Start Game</span>
-      </v-tooltip>
-
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon @click="openToolByName('Website')" v-on="on">
-            <v-icon>mdi-webpack</v-icon>
-          </v-btn>
-        </template>
-        <span>Website</span>
-      </v-tooltip>
-
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon @click="openToolByName('Commit Log')" v-on="on">
-            <v-icon>mdi-file-tree</v-icon>
-          </v-btn>
-        </template>
-        <span>Developer Log</span>
-      </v-tooltip>
-    </v-app-bar>
+    <Nav />
 
     <v-card>
       <v-card-text>
@@ -44,16 +10,14 @@
     </v-card>
 
     <v-tabs vertical>
-      <v-tab>VPK</v-tab>
-      <v-tab>Tools</v-tab>
+      <v-tab>Launch</v-tab>
       <v-tab>Config</v-tab>
       <v-tab>Hammer</v-tab>
+      <v-tab>VPK</v-tab>
+      <v-tab>Vtf</v-tab>
 
       <v-tab-item>
-        <Vpk />
-      </v-tab-item>
-      <v-tab-item>
-        <Tools />
+        <Launch />
       </v-tab-item>
       <v-tab-item>
         <Config />
@@ -61,24 +25,32 @@
       <v-tab-item>
         <Hammer />
       </v-tab-item>
+      <v-tab-item>
+        <Vpk />
+      </v-tab-item>
+      <v-tab-item>
+        <Vtf />
+      </v-tab-item>
     </v-tabs>
   </div>
 </template>
 
 <script>
+import Nav from './Nav'
 import Config from './Config'
 import Hammer from './Hammer'
-import Tools from './Tools'
+import Launch from './Launch'
 import Vpk from './Vpk'
-import Logo from './Logo'
+import Vtf from './Vtf'
 
 export default {
   components: {
     Config,
     Hammer,
-    Tools,
+    Launch,
     Vpk,
-    Logo
+    Vtf,
+    Nav
   }
 }
 </script>

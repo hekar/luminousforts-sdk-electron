@@ -9,50 +9,78 @@
         hide-details
       ></v-text-field>
     </v-card-title>
-    <v-file-input
-      ref="vpkInput"
+    <FileInput
       accept=".vpk"
-      v-model="files"
-      solo
-      display-size
-      label="Valve Pak (.vpk) file"
-    ></v-file-input>
-    <v-btn text @click="openFile()">
-      Open
-    </v-btn>
+      label="Valve Pak"
+      title="Valve Pak (.vpk) file"
+      @file-selected="listVpk"
+    />
     <v-data-table
       :headers="headers"
       :items="items"
       :search="search"
-    ></v-data-table>
+    >
+      <template v-slot:item.action="{ item }">
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+          <v-btn
+            icon
+            class="mr-2"
+            v-on="on"
+            @click="extract(item)"
+          >
+            <v-icon>mdi-export</v-icon>
+          </v-btn>
+          </template>
+          <span>Extract file</span>
+        </v-tooltip>
+      </template>
+    </v-data-table>
   </v-card>
 </template>
 
 <script>
+import FileInput from '../input/FileInput'
+
 export default {
+  components: {
+    FileInput
+  },
   data () {
     return {
       items: [],
       files: [],
       search: '',
+      selectedFile: null,
       headers: [{
         text: 'Filepath',
         value: 'path'
+      }, {
+        text: 'Export',
+        value: 'action',
+        sortable: false
       }]
     }
   },
   methods: {
-    openFile (filename) {
-      debugger
-    }
-  },
-  watch: {
-    files: function () {
-      debugger
-
+    listVpk ({ selectedFile }) {
+      this.selectedFile = selectedFile
       this.$electron.remote.app.sdk.wine({
         cwd: '~/.steam/steam/steamapps/common/Source SDK Base 2013 Singleplayer/bin/',
-        cmd: 'vpk.exe x '
+        cmd: `vpk.exe l "${selectedFile}"`
+      }).then(({ stdout }) => {
+        this.items = stdout.split('\n').map((s) => ({
+          path: s
+        }))
+      })
+    },
+    extract ({ path }) {
+      const selectedFile = this.selectedFile
+      this.$electron.remote.app.sdk.wine({
+        cwd: '~/.steam/steam/steamapps/common/Source SDK Base 2013 Singleplayer/bin/',
+        cmd: `vpk.exe x "${selectedFile}" "${path}"`
+      }).then(({ stdout, stderr }) => {
+        debugger
       })
     }
   }

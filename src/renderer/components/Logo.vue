@@ -2,8 +2,8 @@
   <svg
     stroke="black"
     fill="white"
-    width="32"
-    height="32"
+    :width="width"
+    :height="height"
     viewBox="0 0 16 16"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -36,3 +36,18 @@
   </g>
   </svg>
 </template>
+
+<script>
+export default {
+  props: {
+    width: {
+      type: String,
+      default: '32'
+    },
+    height: {
+      type: String,
+      default: '32'
+    }
+  }
+}
+</script>
