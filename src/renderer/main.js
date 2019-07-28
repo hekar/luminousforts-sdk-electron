@@ -6,8 +6,8 @@ import App from './App'
 import router from './router'
 import store from './store'
 
-import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.min.css'
+import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify)
 
@@ -18,9 +18,12 @@ Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
+const vue = new Vue({
   components: { App },
   router,
   store,
+  vuetify: new Vuetify({}),
   template: '<App/>'
-}).$mount('#app')
+})
+
+vue.$mount('#app')

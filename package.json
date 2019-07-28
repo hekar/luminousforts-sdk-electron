@@ -1,9 +1,9 @@
 {
-  "name": "ssdk-2013-electron",
+  "name": "luminousforts-sdk",
   "version": "0.0.1",
   "author": "Hekar Khani <hekark@gmail.com>",
   "description": "An electron-vue project",
-  "license": null,
+  "license": "MIT",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
@@ -22,8 +22,8 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "ssdk-2013-electron",
-    "appId": "com.hekar.luminousforts",
+    "productName": "LuminousForts SDK",
+    "appId": "com.hekar.luminousforts.sdk",
     "directories": {
       "output": "build"
     },

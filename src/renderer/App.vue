@@ -1,5 +1,5 @@
 <template>
-  <v-app id="app" dark>
+  <v-app id="app">
     <router-view></router-view>
   </v-app>
 </template>
@@ -8,11 +8,7 @@
   export default {
     name: 'ssdk-2013-electron',
     created () {
-      this.$vuetify.theme = {
-        themes: {
-          dark: false
-        }
-      }
+      this.$vuetify.theme.dark = false
     }
   }
 </script>
